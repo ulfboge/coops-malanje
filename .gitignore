@@ -1,0 +1,46 @@
+# QGIS files
+*.qgs~
+*.qgz~
+
+# Data files
+*.gpkg
+*.shp
+*.shx
+*.dbf
+*.prj
+*.qix
+*.fix
+*.qmd
+
+# Database
+*.sqlite
+*.db
+
+# Credentials
+*.pem
+*.ppk
+*.key
+*.env
+
+# Temporary files
+*.bak
+*.swp
+*~
+.DS_Store
+
+# OneDrive sync files
+*.tmp
+~$*
+
+# Log files
+*.log
+
+# Directories to ignore
+/data/raw/
+/data/processed/
+/data/backups/
+/media/
+/temp/
+
+# Don't ignore
+!*.csv 
