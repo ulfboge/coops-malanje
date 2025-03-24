@@ -1,0 +1,9 @@
+[postgresql]
+host=localhost
+port=5432
+database=coops_malanje
+user=your_username
+password=your_password
+
+[postgis]
+srid=32733  # UTM Zone 33S for Malanje, Angola 

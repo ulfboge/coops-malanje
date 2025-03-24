@@ -43,4 +43,7 @@
 /temp/
 
 # Don't ignore
-!*.csv 
+!*.csv
+
+# Database configuration
+db/config/database.ini 
