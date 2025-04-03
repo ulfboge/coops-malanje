@@ -1,0 +1,96 @@
+id,name,municipality_id
+1,Cambxi,1
+2,Marimba,2
+3,Kanjimbinza,1
+4,Kihinga,2
+5,Bananeiras,1
+6,Quessua,1
+7,Pande,2
+8,Bambi,2
+9,Dulo,1
+10,Munha Teca,2
+11,Cambondo Do Kuiji,1
+12,Sunzi De Cima,1
+13,Camôngua,1
+14,Zage,2
+15,Bulo,2
+16,Kajimato,1
+17,Cauwe,1
+18,Quissol,1
+19,Kamitutu,3
+20,Carianga,1
+21,Songua,4
+22,Massola,5
+23,Bembo,4
+24,Kipacassa,5
+25,Calolo,2
+26,Bande,2
+27,Kikuka,3
+28,Tuinje,1
+29,Benguês,5
+30,Kiluanje Kiassamba,6
+31,Zundo Kiboco,7
+32,Buta,7
+33,Caculo Kange,3
+34,Matete,5
+35,Luelo,6
+36,Cunga,6
+37,Bango Caxinde,3
+38,Zundo Cambolo,7
+39,Amaral,8
+40,Quimbango,8
+41,Mangaji,8
+42,Quirioa,8
+43,Bumba,4
+44,Mufuma,8
+45,Capele,8
+46,Zumbuca,8
+47,Divina,8
+48,Manuel Cumbenama,8
+49,Jicula,8
+50,Hele,8
+51,Mutumbua,8
+52,Nzari,8
+53,Ngombe,8
+54,Mudiz,8
+55,Peso,8
+56,Buco,3
+57,Quimongo,6
+58,Mudile,3
+59,Ngola Kiluanje,7
+60,Canjonjo,5
+61,Cassefo,6
+62,Zuzu Macolo,6
+63,Lima,3
+64,Kissamba,4
+65,Quizanga,3
+66,Bila,4
+67,Cambunge,3
+68,Manguinju,3
+69,Nzamba Sequeira,5
+70,Kaiala,1
+71,Clemente,4
+72,Ngola Mbande,3
+73,Cateco,5
+74,Kilamba Kiaxi,5
+75,Xinda,1
+76,Makala Lombe,3
+77,Kipacassa,4
+78,Bege,4
+79,Saca,4
+80,Candange,8
+81,Cuki,4
+82,Cardoso Invita,4
+83,Cula Magia,4
+84,Quissonde,4
+85,Sango,4
+86,Bango Micessa,4
+87,Camana,4
+88,Kajiza,4
+89,Vutula,7
+90,Kicanda,3
+91,Kalanda,2
+92,Landa,2
+93,Muquixi,2
+94,Ndala Kinguangua,2
+95,Vunda Kalunga,3 

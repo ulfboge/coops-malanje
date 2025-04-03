@@ -1,0 +1,973 @@
+<!DOCTYPE qgis-layer-definition>
+<qlr>
+  <layer-tree-group expanded="1" name="" checked="Qt::Checked" groupLayer="">
+    <customproperties>
+      <Option/>
+    </customproperties>
+    <layer-tree-layer expanded="1" legend_exp="" name="cooperative_areas" id="cooperative_areas_1f83f692_8fce_4b51_8b55_7dade3372a66" legend_split_behavior="0" source="dbname='coops_malanje' host=ec2-13-48-203-105.eu-north-1.compute.amazonaws.com port=5432 authcfg=257z52o key='id' srid=32733 type=MultiPolygon checkPrimaryKeyUnicity='1' table=&quot;public&quot;.&quot;cooperative_areas&quot; (geom)" providerKey="postgres" patch_size="-1,-1" checked="Qt::Checked">
+      <customproperties>
+        <Option/>
+      </customproperties>
+    </layer-tree-layer>
+  </layer-tree-group>
+  <maplayers>
+    <maplayer readOnly="0" simplifyDrawingHints="1" simplifyMaxScale="1" autoRefreshMode="Disabled" type="vector" hasScaleBasedVisibilityFlag="0" refreshOnNotifyMessage="" symbologyReferenceScale="-1" geometry="Polygon" wkbType="MultiPolygon" simplifyLocal="1" autoRefreshTime="0" simplifyAlgorithm="0" legendPlaceholderImage="" minScale="100000000" maxScale="0" refreshOnNotifyEnabled="0" labelsEnabled="0" simplifyDrawingTol="1" styleCategories="AllStyleCategories">
+      <extent>
+        <xmin>667724.29142209561541677</xmin>
+        <ymin>8954349.99678942188620567</ymin>
+        <xmax>669730.40182769601233304</xmax>
+        <ymax>8956223.06635753996670246</ymax>
+      </extent>
+      <wgs84extent>
+        <xmin>16.52767449290127999</xmin>
+        <ymin>-9.45614165020916175</ymin>
+        <xmax>16.54601765249475775</xmax>
+        <ymax>-9.43912623918214422</ymax>
+      </wgs84extent>
+      <id>cooperative_areas_1f83f692_8fce_4b51_8b55_7dade3372a66</id>
+      <datasource>dbname='coops_malanje' host=ec2-13-48-203-105.eu-north-1.compute.amazonaws.com port=5432 authcfg=257z52o key='id' srid=32733 type=MultiPolygon checkPrimaryKeyUnicity='1' table="public"."cooperative_areas" (geom)</datasource>
+      <keywordList>
+        <value></value>
+      </keywordList>
+      <layername>cooperative_areas</layername>
+      <srs>
+        <spatialrefsys nativeFormat="Wkt">
+          <wkt>PROJCRS["WGS 84 / UTM zone 33S",BASEGEOGCRS["WGS 84",ENSEMBLE["World Geodetic System 1984 ensemble",MEMBER["World Geodetic System 1984 (Transit)"],MEMBER["World Geodetic System 1984 (G730)"],MEMBER["World Geodetic System 1984 (G873)"],MEMBER["World Geodetic System 1984 (G1150)"],MEMBER["World Geodetic System 1984 (G1674)"],MEMBER["World Geodetic System 1984 (G1762)"],MEMBER["World Geodetic System 1984 (G2139)"],MEMBER["World Geodetic System 1984 (G2296)"],ELLIPSOID["WGS 84",6378137,298.257223563,LENGTHUNIT["metre",1]],ENSEMBLEACCURACY[2.0]],PRIMEM["Greenwich",0,ANGLEUNIT["degree",0.0174532925199433]],ID["EPSG",4326]],CONVERSION["UTM zone 33S",METHOD["Transverse Mercator",ID["EPSG",9807]],PARAMETER["Latitude of natural origin",0,ANGLEUNIT["degree",0.0174532925199433],ID["EPSG",8801]],PARAMETER["Longitude of natural origin",15,ANGLEUNIT["degree",0.0174532925199433],ID["EPSG",8802]],PARAMETER["Scale factor at natural origin",0.9996,SCALEUNIT["unity",1],ID["EPSG",8805]],PARAMETER["False easting",500000,LENGTHUNIT["metre",1],ID["EPSG",8806]],PARAMETER["False northing",10000000,LENGTHUNIT["metre",1],ID["EPSG",8807]]],CS[Cartesian,2],AXIS["(E)",east,ORDER[1],LENGTHUNIT["metre",1]],AXIS["(N)",north,ORDER[2],LENGTHUNIT["metre",1]],USAGE[SCOPE["Navigation and medium accuracy spatial referencing."],AREA["Between 12°E and 18°E, southern hemisphere between 80°S and equator, onshore and offshore. Angola. Congo. Democratic Republic of the Congo (Zaire). Gabon. Namibia. South Africa."],BBOX[-80,12,0,18]],ID["EPSG",32733]]</wkt>
+          <proj4>+proj=utm +zone=33 +south +datum=WGS84 +units=m +no_defs</proj4>
+          <srsid>3183</srsid>
+          <srid>32733</srid>
+          <authid>EPSG:32733</authid>
+          <description>WGS 84 / UTM zone 33S</description>
+          <projectionacronym>utm</projectionacronym>
+          <ellipsoidacronym>EPSG:7030</ellipsoidacronym>
+          <geographicflag>false</geographicflag>
+        </spatialrefsys>
+      </srs>
+      <resourceMetadata>
+        <identifier></identifier>
+        <parentidentifier></parentidentifier>
+        <language></language>
+        <type>dataset</type>
+        <title></title>
+        <abstract></abstract>
+        <contact>
+          <name></name>
+          <organization></organization>
+          <position></position>
+          <voice></voice>
+          <fax></fax>
+          <email></email>
+          <role></role>
+        </contact>
+        <links/>
+        <dates/>
+        <fees></fees>
+        <encoding></encoding>
+        <crs>
+          <spatialrefsys nativeFormat="Wkt">
+            <wkt>PROJCRS["WGS 84 / UTM zone 33S",BASEGEOGCRS["WGS 84",ENSEMBLE["World Geodetic System 1984 ensemble",MEMBER["World Geodetic System 1984 (Transit)"],MEMBER["World Geodetic System 1984 (G730)"],MEMBER["World Geodetic System 1984 (G873)"],MEMBER["World Geodetic System 1984 (G1150)"],MEMBER["World Geodetic System 1984 (G1674)"],MEMBER["World Geodetic System 1984 (G1762)"],MEMBER["World Geodetic System 1984 (G2139)"],MEMBER["World Geodetic System 1984 (G2296)"],ELLIPSOID["WGS 84",6378137,298.257223563,LENGTHUNIT["metre",1]],ENSEMBLEACCURACY[2.0]],PRIMEM["Greenwich",0,ANGLEUNIT["degree",0.0174532925199433]],ID["EPSG",4326]],CONVERSION["UTM zone 33S",METHOD["Transverse Mercator",ID["EPSG",9807]],PARAMETER["Latitude of natural origin",0,ANGLEUNIT["degree",0.0174532925199433],ID["EPSG",8801]],PARAMETER["Longitude of natural origin",15,ANGLEUNIT["degree",0.0174532925199433],ID["EPSG",8802]],PARAMETER["Scale factor at natural origin",0.9996,SCALEUNIT["unity",1],ID["EPSG",8805]],PARAMETER["False easting",500000,LENGTHUNIT["metre",1],ID["EPSG",8806]],PARAMETER["False northing",10000000,LENGTHUNIT["metre",1],ID["EPSG",8807]]],CS[Cartesian,2],AXIS["(E)",east,ORDER[1],LENGTHUNIT["metre",1]],AXIS["(N)",north,ORDER[2],LENGTHUNIT["metre",1]],USAGE[SCOPE["Navigation and medium accuracy spatial referencing."],AREA["Between 12°E and 18°E, southern hemisphere between 80°S and equator, onshore and offshore. Angola. Congo. Democratic Republic of the Congo (Zaire). Gabon. Namibia. South Africa."],BBOX[-80,12,0,18]],ID["EPSG",32733]]</wkt>
+            <proj4>+proj=utm +zone=33 +south +datum=WGS84 +units=m +no_defs</proj4>
+            <srsid>3183</srsid>
+            <srid>32733</srid>
+            <authid>EPSG:32733</authid>
+            <description>WGS 84 / UTM zone 33S</description>
+            <projectionacronym>utm</projectionacronym>
+            <ellipsoidacronym>EPSG:7030</ellipsoidacronym>
+            <geographicflag>false</geographicflag>
+          </spatialrefsys>
+        </crs>
+        <extent>
+          <spatial crs="EPSG:32733" minz="0" maxy="-179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368" maxx="-179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368" maxz="0" dimensions="2" miny="179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368" minx="179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368"/>
+          <temporal>
+            <period>
+              <start></start>
+              <end></end>
+            </period>
+          </temporal>
+        </extent>
+      </resourceMetadata>
+      <provider encoding="">postgres</provider>
+      <vectorjoins/>
+      <layerDependencies/>
+      <dataDependencies/>
+      <expressionfields/>
+      <map-layer-style-manager current="default">
+        <map-layer-style name="default"/>
+      </map-layer-style-manager>
+      <auxiliaryLayer/>
+      <metadataUrls/>
+      <flags>
+        <Identifiable>1</Identifiable>
+        <Removable>1</Removable>
+        <Searchable>1</Searchable>
+        <Private>0</Private>
+      </flags>
+      <temporal durationField="id" fixedDuration="0" accumulate="0" endExpression="" limitMode="0" durationUnit="min" mode="0" enabled="0" endField="" startField="survey_date" startExpression="">
+        <fixedRange>
+          <start></start>
+          <end></end>
+        </fixedRange>
+      </temporal>
+      <elevation zoffset="0" extrusionEnabled="0" extrusion="0" zscale="1" binding="Centroid" symbology="Line" clamping="Terrain" type="IndividualFeatures" respectLayerSymbol="1" showMarkerSymbolInSurfacePlots="0">
+        <data-defined-properties>
+          <Option type="Map">
+            <Option value="" name="name" type="QString"/>
+            <Option name="properties"/>
+            <Option value="collection" name="type" type="QString"/>
+          </Option>
+        </data-defined-properties>
+        <profileLineSymbol>
+          <symbol name="" alpha="1" type="line" frame_rate="10" force_rhr="0" clip_to_extent="1" is_animated="0">
+            <data_defined_properties>
+              <Option type="Map">
+                <Option value="" name="name" type="QString"/>
+                <Option name="properties"/>
+                <Option value="collection" name="type" type="QString"/>
+              </Option>
+            </data_defined_properties>
+            <layer locked="0" pass="0" id="{7d685155-d344-4f66-907a-7a8960ed109f}" class="SimpleLine" enabled="1">
+              <Option type="Map">
+                <Option value="0" name="align_dash_pattern" type="QString"/>
+                <Option value="square" name="capstyle" type="QString"/>
+                <Option value="5;2" name="customdash" type="QString"/>
+                <Option value="3x:0,0,0,0,0,0" name="customdash_map_unit_scale" type="QString"/>
+                <Option value="MM" name="customdash_unit" type="QString"/>
+                <Option value="0" name="dash_pattern_offset" type="QString"/>
+                <Option value="3x:0,0,0,0,0,0" name="dash_pattern_offset_map_unit_scale" type="QString"/>
+                <Option value="MM" name="dash_pattern_offset_unit" type="QString"/>
+                <Option value="0" name="draw_inside_polygon" type="QString"/>
+                <Option value="bevel" name="joinstyle" type="QString"/>
+                <Option value="231,113,72,255,rgb:0.90588235294117647,0.44313725490196076,0.28235294117647058,1" name="line_color" type="QString"/>
+                <Option value="solid" name="line_style" type="QString"/>
+                <Option value="0.6" name="line_width" type="QString"/>
+                <Option value="MM" name="line_width_unit" type="QString"/>
+                <Option value="0" name="offset" type="QString"/>
+                <Option value="3x:0,0,0,0,0,0" name="offset_map_unit_scale" type="QString"/>
+                <Option value="MM" name="offset_unit" type="QString"/>
+                <Option value="0" name="ring_filter" type="QString"/>
+                <Option value="0" name="trim_distance_end" type="QString"/>
+                <Option value="3x:0,0,0,0,0,0" name="trim_distance_end_map_unit_scale" type="QString"/>
+                <Option value="MM" name="trim_distance_end_unit" type="QString"/>
+                <Option value="0" name="trim_distance_start" type="QString"/>
+                <Option value="3x:0,0,0,0,0,0" name="trim_distance_start_map_unit_scale" type="QString"/>
+                <Option value="MM" name="trim_distance_start_unit" type="QString"/>
+                <Option value="0" name="tweak_dash_pattern_on_corners" type="QString"/>
+                <Option value="0" name="use_custom_dash" type="QString"/>
+                <Option value="3x:0,0,0,0,0,0" name="width_map_unit_scale" type="QString"/>
+              </Option>
+              <data_defined_properties>
+                <Option type="Map">
+                  <Option value="" name="name" type="QString"/>
+                  <Option name="properties"/>
+                  <Option value="collection" name="type" type="QString"/>
+                </Option>
+              </data_defined_properties>
+            </layer>
+          </symbol>
+        </profileLineSymbol>
+        <profileFillSymbol>
+          <symbol name="" alpha="1" type="fill" frame_rate="10" force_rhr="0" clip_to_extent="1" is_animated="0">
+            <data_defined_properties>
+              <Option type="Map">
+                <Option value="" name="name" type="QString"/>
+                <Option name="properties"/>
+                <Option value="collection" name="type" type="QString"/>
+              </Option>
+            </data_defined_properties>
+            <layer locked="0" pass="0" id="{e56aeb30-df37-4915-a859-2e24fc832759}" class="SimpleFill" enabled="1">
+              <Option type="Map">
+                <Option value="3x:0,0,0,0,0,0" name="border_width_map_unit_scale" type="QString"/>
+                <Option value="231,113,72,255,rgb:0.90588235294117647,0.44313725490196076,0.28235294117647058,1" name="color" type="QString"/>
+                <Option value="bevel" name="joinstyle" type="QString"/>
+                <Option value="0,0" name="offset" type="QString"/>
+                <Option value="3x:0,0,0,0,0,0" name="offset_map_unit_scale" type="QString"/>
+                <Option value="MM" name="offset_unit" type="QString"/>
+                <Option value="165,81,51,255,rgb:0.6470588235294118,0.31651789120317386,0.20167849240863661,1" name="outline_color" type="QString"/>
+                <Option value="solid" name="outline_style" type="QString"/>
+                <Option value="0.2" name="outline_width" type="QString"/>
+                <Option value="MM" name="outline_width_unit" type="QString"/>
+                <Option value="solid" name="style" type="QString"/>
+              </Option>
+              <data_defined_properties>
+                <Option type="Map">
+                  <Option value="" name="name" type="QString"/>
+                  <Option name="properties"/>
+                  <Option value="collection" name="type" type="QString"/>
+                </Option>
+              </data_defined_properties>
+            </layer>
+          </symbol>
+        </profileFillSymbol>
+        <profileMarkerSymbol>
+          <symbol name="" alpha="1" type="marker" frame_rate="10" force_rhr="0" clip_to_extent="1" is_animated="0">
+            <data_defined_properties>
+              <Option type="Map">
+                <Option value="" name="name" type="QString"/>
+                <Option name="properties"/>
+                <Option value="collection" name="type" type="QString"/>
+              </Option>
+            </data_defined_properties>
+            <layer locked="0" pass="0" id="{f99a442b-1f55-4e59-be95-fa5cb615bfea}" class="SimpleMarker" enabled="1">
+              <Option type="Map">
+                <Option value="0" name="angle" type="QString"/>
+                <Option value="square" name="cap_style" type="QString"/>
+                <Option value="231,113,72,255,rgb:0.90588235294117647,0.44313725490196076,0.28235294117647058,1" name="color" type="QString"/>
+                <Option value="1" name="horizontal_anchor_point" type="QString"/>
+                <Option value="bevel" name="joinstyle" type="QString"/>
+                <Option value="diamond" name="name" type="QString"/>
+                <Option value="0,0" name="offset" type="QString"/>
+                <Option value="3x:0,0,0,0,0,0" name="offset_map_unit_scale" type="QString"/>
+                <Option value="MM" name="offset_unit" type="QString"/>
+                <Option value="165,81,51,255,rgb:0.6470588235294118,0.31651789120317386,0.20167849240863661,1" name="outline_color" type="QString"/>
+                <Option value="solid" name="outline_style" type="QString"/>
+                <Option value="0.2" name="outline_width" type="QString"/>
+                <Option value="3x:0,0,0,0,0,0" name="outline_width_map_unit_scale" type="QString"/>
+                <Option value="MM" name="outline_width_unit" type="QString"/>
+                <Option value="diameter" name="scale_method" type="QString"/>
+                <Option value="3" name="size" type="QString"/>
+                <Option value="3x:0,0,0,0,0,0" name="size_map_unit_scale" type="QString"/>
+                <Option value="MM" name="size_unit" type="QString"/>
+                <Option value="1" name="vertical_anchor_point" type="QString"/>
+              </Option>
+              <data_defined_properties>
+                <Option type="Map">
+                  <Option value="" name="name" type="QString"/>
+                  <Option name="properties"/>
+                  <Option value="collection" name="type" type="QString"/>
+                </Option>
+              </data_defined_properties>
+            </layer>
+          </symbol>
+        </profileMarkerSymbol>
+      </elevation>
+      <renderer-v2 forceraster="0" enableorderby="0" type="singleSymbol" referencescale="-1" symbollevels="0">
+        <symbols>
+          <symbol name="0" alpha="1" type="fill" frame_rate="10" force_rhr="0" clip_to_extent="1" is_animated="0">
+            <data_defined_properties>
+              <Option type="Map">
+                <Option value="" name="name" type="QString"/>
+                <Option name="properties"/>
+                <Option value="collection" name="type" type="QString"/>
+              </Option>
+            </data_defined_properties>
+            <layer locked="0" pass="0" id="{25946e18-0cb7-46d3-bc13-6b80b362e79e}" class="SimpleFill" enabled="1">
+              <Option type="Map">
+                <Option value="3x:0,0,0,0,0,0" name="border_width_map_unit_scale" type="QString"/>
+                <Option value="152,125,183,255,rgb:0.59607843137254901,0.49019607843137253,0.71764705882352942,1" name="color" type="QString"/>
+                <Option value="bevel" name="joinstyle" type="QString"/>
+                <Option value="0,0" name="offset" type="QString"/>
+                <Option value="3x:0,0,0,0,0,0" name="offset_map_unit_scale" type="QString"/>
+                <Option value="MM" name="offset_unit" type="QString"/>
+                <Option value="35,35,35,255,rgb:0.13725490196078433,0.13725490196078433,0.13725490196078433,1" name="outline_color" type="QString"/>
+                <Option value="solid" name="outline_style" type="QString"/>
+                <Option value="0.26" name="outline_width" type="QString"/>
+                <Option value="MM" name="outline_width_unit" type="QString"/>
+                <Option value="solid" name="style" type="QString"/>
+              </Option>
+              <data_defined_properties>
+                <Option type="Map">
+                  <Option value="" name="name" type="QString"/>
+                  <Option name="properties"/>
+                  <Option value="collection" name="type" type="QString"/>
+                </Option>
+              </data_defined_properties>
+            </layer>
+          </symbol>
+        </symbols>
+        <rotation/>
+        <sizescale/>
+        <data-defined-properties>
+          <Option type="Map">
+            <Option value="" name="name" type="QString"/>
+            <Option name="properties"/>
+            <Option value="collection" name="type" type="QString"/>
+          </Option>
+        </data-defined-properties>
+      </renderer-v2>
+      <selection mode="Default">
+        <selectionColor invalid="1"/>
+        <selectionSymbol>
+          <symbol name="" alpha="1" type="fill" frame_rate="10" force_rhr="0" clip_to_extent="1" is_animated="0">
+            <data_defined_properties>
+              <Option type="Map">
+                <Option value="" name="name" type="QString"/>
+                <Option name="properties"/>
+                <Option value="collection" name="type" type="QString"/>
+              </Option>
+            </data_defined_properties>
+            <layer locked="0" pass="0" id="{3dd8754c-2267-4d37-8fe4-ff8f52aab0ed}" class="SimpleFill" enabled="1">
+              <Option type="Map">
+                <Option value="3x:0,0,0,0,0,0" name="border_width_map_unit_scale" type="QString"/>
+                <Option value="0,0,255,255,rgb:0,0,1,1" name="color" type="QString"/>
+                <Option value="bevel" name="joinstyle" type="QString"/>
+                <Option value="0,0" name="offset" type="QString"/>
+                <Option value="3x:0,0,0,0,0,0" name="offset_map_unit_scale" type="QString"/>
+                <Option value="MM" name="offset_unit" type="QString"/>
+                <Option value="35,35,35,255,rgb:0.13725490196078433,0.13725490196078433,0.13725490196078433,1" name="outline_color" type="QString"/>
+                <Option value="solid" name="outline_style" type="QString"/>
+                <Option value="0.26" name="outline_width" type="QString"/>
+                <Option value="MM" name="outline_width_unit" type="QString"/>
+                <Option value="solid" name="style" type="QString"/>
+              </Option>
+              <data_defined_properties>
+                <Option type="Map">
+                  <Option value="" name="name" type="QString"/>
+                  <Option name="properties"/>
+                  <Option value="collection" name="type" type="QString"/>
+                </Option>
+              </data_defined_properties>
+            </layer>
+          </symbol>
+        </selectionSymbol>
+      </selection>
+      <customproperties>
+        <Option type="Map">
+          <Option name="dualview/previewExpressions" type="List">
+            <Option value="&quot;cooperative_name&quot;" type="QString"/>
+          </Option>
+          <Option value="0" name="embeddedWidgets/count" type="int"/>
+          <Option name="variableNames"/>
+          <Option name="variableValues"/>
+        </Option>
+      </customproperties>
+      <blendMode>0</blendMode>
+      <featureBlendMode>0</featureBlendMode>
+      <layerOpacity>1</layerOpacity>
+      <geometryOptions removeDuplicateNodes="0" geometryPrecision="0">
+        <activeChecks/>
+        <checkConfiguration type="Map">
+          <Option name="QgsGeometryGapCheck" type="Map">
+            <Option value="0" name="allowedGapsBuffer" type="double"/>
+            <Option value="false" name="allowedGapsEnabled" type="bool"/>
+            <Option value="" name="allowedGapsLayer" type="QString"/>
+          </Option>
+        </checkConfiguration>
+      </geometryOptions>
+      <legend showLabelLegend="0" type="default-vector"/>
+      <referencedLayers/>
+      <fieldConfiguration>
+        <field name="id" configurationFlags="NoFlag">
+          <editWidget type="TextEdit">
+            <config>
+              <Option type="Map">
+                <Option value="false" name="IsMultiline" type="bool"/>
+                <Option value="false" name="UseHtml" type="bool"/>
+              </Option>
+            </config>
+          </editWidget>
+        </field>
+        <field name="cooperative_id" configurationFlags="NoFlag">
+          <editWidget type="TextEdit">
+            <config>
+              <Option type="Map">
+                <Option value="false" name="IsMultiline" type="bool"/>
+                <Option value="false" name="UseHtml" type="bool"/>
+              </Option>
+            </config>
+          </editWidget>
+        </field>
+        <field name="cooperative_name" configurationFlags="NoFlag">
+          <editWidget type="ValueRelation">
+            <config>
+              <Option type="Map">
+                <Option value="false" name="AllowMulti" type="bool"/>
+                <Option value="false" name="AllowNull" type="bool"/>
+                <Option value="2" name="CompleterMatchFlags" type="int"/>
+                <Option value="" name="Description" type="QString"/>
+                <Option value="false" name="DisplayGroupName" type="bool"/>
+                <Option value="" name="FilterExpression" type="QString"/>
+                <Option value="" name="Group" type="QString"/>
+                <Option value="name" name="Key" type="QString"/>
+                <Option value="cooperatives_c5f6f04c_8dc4_4e60_8fe1_97b8a9390fc8" name="Layer" type="QString"/>
+                <Option value="cooperatives" name="LayerName" type="QString"/>
+                <Option value="postgres" name="LayerProviderName" type="QString"/>
+                <Option value="dbname='coops_malanje' host=ec2-13-48-203-105.eu-north-1.compute.amazonaws.com port=5432 authcfg=257z52o key='id' type=Point checkPrimaryKeyUnicity='1' table=&quot;public&quot;.&quot;cooperatives&quot; (geom)" name="LayerSource" type="QString"/>
+                <Option value="1" name="NofColumns" type="int"/>
+                <Option value="false" name="OrderByValue" type="bool"/>
+                <Option value="false" name="UseCompleter" type="bool"/>
+                <Option value="name" name="Value" type="QString"/>
+              </Option>
+            </config>
+          </editWidget>
+        </field>
+        <field name="municipality" configurationFlags="NoFlag">
+          <editWidget type="TextEdit">
+            <config>
+              <Option type="Map">
+                <Option value="false" name="IsMultiline" type="bool"/>
+                <Option value="false" name="UseHtml" type="bool"/>
+              </Option>
+            </config>
+          </editWidget>
+        </field>
+        <field name="village_name" configurationFlags="NoFlag">
+          <editWidget type="TextEdit">
+            <config>
+              <Option type="Map">
+                <Option value="false" name="IsMultiline" type="bool"/>
+                <Option value="false" name="UseHtml" type="bool"/>
+              </Option>
+            </config>
+          </editWidget>
+        </field>
+        <field name="total_area_ha" configurationFlags="NoFlag">
+          <editWidget type="Range">
+            <config>
+              <Option type="Map">
+                <Option value="true" name="AllowNull" type="bool"/>
+                <Option value="1.7976931348623157e+308" name="Max" type="double"/>
+                <Option value="-1.7976931348623157e+308" name="Min" type="double"/>
+                <Option value="0" name="Precision" type="int"/>
+                <Option value="1" name="Step" type="double"/>
+                <Option value="SpinBox" name="Style" type="QString"/>
+              </Option>
+            </config>
+          </editWidget>
+        </field>
+        <field name="actual_area_ha" configurationFlags="NoFlag">
+          <editWidget type="Range">
+            <config>
+              <Option type="Map">
+                <Option value="true" name="AllowNull" type="bool"/>
+                <Option value="1.7976931348623157e+308" name="Max" type="double"/>
+                <Option value="-1.7976931348623157e+308" name="Min" type="double"/>
+                <Option value="0" name="Precision" type="int"/>
+                <Option value="1" name="Step" type="double"/>
+                <Option value="SpinBox" name="Style" type="QString"/>
+              </Option>
+            </config>
+          </editWidget>
+        </field>
+        <field name="difference_ha" configurationFlags="NoFlag">
+          <editWidget type="TextEdit">
+            <config>
+              <Option type="Map">
+                <Option value="false" name="IsMultiline" type="bool"/>
+                <Option value="false" name="UseHtml" type="bool"/>
+              </Option>
+            </config>
+          </editWidget>
+        </field>
+        <field name="cultivated_area_ha" configurationFlags="NoFlag">
+          <editWidget type="TextEdit">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field name="fallow_area_ha" configurationFlags="NoFlag">
+          <editWidget type="TextEdit">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field name="forest_area_ha" configurationFlags="NoFlag">
+          <editWidget type="TextEdit">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field name="other_uses_ha" configurationFlags="NoFlag">
+          <editWidget type="TextEdit">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field name="main_crop" configurationFlags="NoFlag">
+          <editWidget type="TextEdit">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field name="secondary_crop" configurationFlags="NoFlag">
+          <editWidget type="TextEdit">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field name="crop_rotation_system" configurationFlags="NoFlag">
+          <editWidget type="TextEdit">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field name="has_irrigation" configurationFlags="NoFlag">
+          <editWidget type="CheckBox">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field name="has_storage" configurationFlags="NoFlag">
+          <editWidget type="CheckBox">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field name="has_processing_facility" configurationFlags="NoFlag">
+          <editWidget type="CheckBox">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field name="survey_date" configurationFlags="NoFlag">
+          <editWidget type="DateTime">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field name="surveyor_name" configurationFlags="NoFlag">
+          <editWidget type="TextEdit">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field name="data_source" configurationFlags="NoFlag">
+          <editWidget type="TextEdit">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field name="last_updated" configurationFlags="NoFlag">
+          <editWidget type="TextEdit">
+            <config>
+              <Option/>
+            </config>
+          </editWidget>
+        </field>
+        <field name="land_use_id" configurationFlags="NoFlag">
+          <editWidget type="ValueRelation">
+            <config>
+              <Option type="Map">
+                <Option value="false" name="AllowMulti" type="bool"/>
+                <Option value="false" name="AllowNull" type="bool"/>
+                <Option value="2" name="CompleterMatchFlags" type="int"/>
+                <Option value="" name="Description" type="QString"/>
+                <Option value="false" name="DisplayGroupName" type="bool"/>
+                <Option value="" name="FilterExpression" type="QString"/>
+                <Option value="" name="Group" type="QString"/>
+                <Option value="id" name="Key" type="QString"/>
+                <Option value="land_use_types_7c0d25a7_983d_495a_85d6_138225d54040" name="Layer" type="QString"/>
+                <Option value="land_use_types" name="LayerName" type="QString"/>
+                <Option value="postgres" name="LayerProviderName" type="QString"/>
+                <Option value="dbname='coops_malanje' host=ec2-13-48-203-105.eu-north-1.compute.amazonaws.com port=5432 authcfg=257z52o key='id' checkPrimaryKeyUnicity='1' table=&quot;public&quot;.&quot;land_use_types&quot;" name="LayerSource" type="QString"/>
+                <Option value="1" name="NofColumns" type="int"/>
+                <Option value="false" name="OrderByValue" type="bool"/>
+                <Option value="false" name="UseCompleter" type="bool"/>
+                <Option value="name" name="Value" type="QString"/>
+              </Option>
+            </config>
+          </editWidget>
+        </field>
+        <field name="status_id" configurationFlags="NoFlag">
+          <editWidget type="ValueRelation">
+            <config>
+              <Option type="Map">
+                <Option value="false" name="AllowMulti" type="bool"/>
+                <Option value="false" name="AllowNull" type="bool"/>
+                <Option value="2" name="CompleterMatchFlags" type="int"/>
+                <Option value="" name="Description" type="QString"/>
+                <Option value="false" name="DisplayGroupName" type="bool"/>
+                <Option value="" name="FilterExpression" type="QString"/>
+                <Option value="" name="Group" type="QString"/>
+                <Option value="id" name="Key" type="QString"/>
+                <Option value="cooperative_status_6668f9a6_dfd7_4a96_bc31_9152c9debde5" name="Layer" type="QString"/>
+                <Option value="cooperative_status" name="LayerName" type="QString"/>
+                <Option value="postgres" name="LayerProviderName" type="QString"/>
+                <Option value="dbname='coops_malanje' host=ec2-13-48-203-105.eu-north-1.compute.amazonaws.com port=5432 authcfg=257z52o key='id' checkPrimaryKeyUnicity='1' table=&quot;public&quot;.&quot;cooperative_status&quot;" name="LayerSource" type="QString"/>
+                <Option value="1" name="NofColumns" type="int"/>
+                <Option value="false" name="OrderByValue" type="bool"/>
+                <Option value="false" name="UseCompleter" type="bool"/>
+                <Option value="name" name="Value" type="QString"/>
+              </Option>
+            </config>
+          </editWidget>
+        </field>
+        <field name="legal_status" configurationFlags="NoFlag">
+          <editWidget type="TextEdit">
+            <config>
+              <Option type="Map">
+                <Option value="false" name="IsMultiline" type="bool"/>
+                <Option value="false" name="UseHtml" type="bool"/>
+              </Option>
+            </config>
+          </editWidget>
+        </field>
+        <field name="registration_date" configurationFlags="NoFlag">
+          <editWidget type="DateTime">
+            <config>
+              <Option type="Map">
+                <Option value="true" name="allow_null" type="bool"/>
+                <Option value="true" name="calendar_popup" type="bool"/>
+                <Option value="yyyy-MM-dd" name="display_format" type="QString"/>
+                <Option value="yyyy-MM-dd" name="field_format" type="QString"/>
+                <Option value="false" name="field_format_overwrite" type="bool"/>
+                <Option value="false" name="field_iso_format" type="bool"/>
+              </Option>
+            </config>
+          </editWidget>
+        </field>
+        <field name="member_count" configurationFlags="NoFlag">
+          <editWidget type="TextEdit">
+            <config>
+              <Option type="Map">
+                <Option value="false" name="IsMultiline" type="bool"/>
+                <Option value="false" name="UseHtml" type="bool"/>
+              </Option>
+            </config>
+          </editWidget>
+        </field>
+      </fieldConfiguration>
+      <aliases>
+        <alias index="0" name="" field="id"/>
+        <alias index="1" name="" field="cooperative_id"/>
+        <alias index="2" name="Cooperative Name" field="cooperative_name"/>
+        <alias index="3" name="" field="municipality"/>
+        <alias index="4" name="" field="village_name"/>
+        <alias index="5" name="" field="total_area_ha"/>
+        <alias index="6" name="" field="actual_area_ha"/>
+        <alias index="7" name="" field="difference_ha"/>
+        <alias index="8" name="" field="cultivated_area_ha"/>
+        <alias index="9" name="" field="fallow_area_ha"/>
+        <alias index="10" name="" field="forest_area_ha"/>
+        <alias index="11" name="" field="other_uses_ha"/>
+        <alias index="12" name="" field="main_crop"/>
+        <alias index="13" name="" field="secondary_crop"/>
+        <alias index="14" name="" field="crop_rotation_system"/>
+        <alias index="15" name="" field="has_irrigation"/>
+        <alias index="16" name="" field="has_storage"/>
+        <alias index="17" name="" field="has_processing_facility"/>
+        <alias index="18" name="" field="survey_date"/>
+        <alias index="19" name="" field="surveyor_name"/>
+        <alias index="20" name="" field="data_source"/>
+        <alias index="21" name="" field="last_updated"/>
+        <alias index="22" name="" field="land_use_id"/>
+        <alias index="23" name="" field="status_id"/>
+        <alias index="24" name="" field="legal_status"/>
+        <alias index="25" name="" field="registration_date"/>
+        <alias index="26" name="" field="member_count"/>
+      </aliases>
+      <splitPolicies>
+        <policy field="id" policy="Duplicate"/>
+        <policy field="cooperative_id" policy="Duplicate"/>
+        <policy field="cooperative_name" policy="Duplicate"/>
+        <policy field="municipality" policy="Duplicate"/>
+        <policy field="village_name" policy="Duplicate"/>
+        <policy field="total_area_ha" policy="Duplicate"/>
+        <policy field="actual_area_ha" policy="Duplicate"/>
+        <policy field="difference_ha" policy="Duplicate"/>
+        <policy field="cultivated_area_ha" policy="Duplicate"/>
+        <policy field="fallow_area_ha" policy="Duplicate"/>
+        <policy field="forest_area_ha" policy="Duplicate"/>
+        <policy field="other_uses_ha" policy="Duplicate"/>
+        <policy field="main_crop" policy="Duplicate"/>
+        <policy field="secondary_crop" policy="Duplicate"/>
+        <policy field="crop_rotation_system" policy="Duplicate"/>
+        <policy field="has_irrigation" policy="Duplicate"/>
+        <policy field="has_storage" policy="Duplicate"/>
+        <policy field="has_processing_facility" policy="Duplicate"/>
+        <policy field="survey_date" policy="Duplicate"/>
+        <policy field="surveyor_name" policy="Duplicate"/>
+        <policy field="data_source" policy="Duplicate"/>
+        <policy field="last_updated" policy="Duplicate"/>
+        <policy field="land_use_id" policy="Duplicate"/>
+        <policy field="status_id" policy="Duplicate"/>
+        <policy field="legal_status" policy="Duplicate"/>
+        <policy field="registration_date" policy="Duplicate"/>
+        <policy field="member_count" policy="Duplicate"/>
+      </splitPolicies>
+      <duplicatePolicies>
+        <policy field="id" policy="Duplicate"/>
+        <policy field="cooperative_id" policy="Duplicate"/>
+        <policy field="cooperative_name" policy="Duplicate"/>
+        <policy field="municipality" policy="Duplicate"/>
+        <policy field="village_name" policy="Duplicate"/>
+        <policy field="total_area_ha" policy="Duplicate"/>
+        <policy field="actual_area_ha" policy="Duplicate"/>
+        <policy field="difference_ha" policy="Duplicate"/>
+        <policy field="cultivated_area_ha" policy="Duplicate"/>
+        <policy field="fallow_area_ha" policy="Duplicate"/>
+        <policy field="forest_area_ha" policy="Duplicate"/>
+        <policy field="other_uses_ha" policy="Duplicate"/>
+        <policy field="main_crop" policy="Duplicate"/>
+        <policy field="secondary_crop" policy="Duplicate"/>
+        <policy field="crop_rotation_system" policy="Duplicate"/>
+        <policy field="has_irrigation" policy="Duplicate"/>
+        <policy field="has_storage" policy="Duplicate"/>
+        <policy field="has_processing_facility" policy="Duplicate"/>
+        <policy field="survey_date" policy="Duplicate"/>
+        <policy field="surveyor_name" policy="Duplicate"/>
+        <policy field="data_source" policy="Duplicate"/>
+        <policy field="last_updated" policy="Duplicate"/>
+        <policy field="land_use_id" policy="Duplicate"/>
+        <policy field="status_id" policy="Duplicate"/>
+        <policy field="legal_status" policy="Duplicate"/>
+        <policy field="registration_date" policy="Duplicate"/>
+        <policy field="member_count" policy="Duplicate"/>
+      </duplicatePolicies>
+      <defaults>
+        <default expression="" field="id" applyOnUpdate="0"/>
+        <default expression="" field="cooperative_id" applyOnUpdate="0"/>
+        <default expression="" field="cooperative_name" applyOnUpdate="0"/>
+        <default expression="" field="municipality" applyOnUpdate="0"/>
+        <default expression="" field="village_name" applyOnUpdate="0"/>
+        <default expression="" field="total_area_ha" applyOnUpdate="0"/>
+        <default expression="" field="actual_area_ha" applyOnUpdate="0"/>
+        <default expression="" field="difference_ha" applyOnUpdate="0"/>
+        <default expression="" field="cultivated_area_ha" applyOnUpdate="0"/>
+        <default expression="" field="fallow_area_ha" applyOnUpdate="0"/>
+        <default expression="" field="forest_area_ha" applyOnUpdate="0"/>
+        <default expression="" field="other_uses_ha" applyOnUpdate="0"/>
+        <default expression="" field="main_crop" applyOnUpdate="0"/>
+        <default expression="" field="secondary_crop" applyOnUpdate="0"/>
+        <default expression="" field="crop_rotation_system" applyOnUpdate="0"/>
+        <default expression="" field="has_irrigation" applyOnUpdate="0"/>
+        <default expression="" field="has_storage" applyOnUpdate="0"/>
+        <default expression="" field="has_processing_facility" applyOnUpdate="0"/>
+        <default expression="" field="survey_date" applyOnUpdate="0"/>
+        <default expression="" field="surveyor_name" applyOnUpdate="0"/>
+        <default expression="" field="data_source" applyOnUpdate="0"/>
+        <default expression="" field="last_updated" applyOnUpdate="0"/>
+        <default expression="" field="land_use_id" applyOnUpdate="0"/>
+        <default expression="" field="status_id" applyOnUpdate="0"/>
+        <default expression="" field="legal_status" applyOnUpdate="0"/>
+        <default expression="" field="registration_date" applyOnUpdate="0"/>
+        <default expression="" field="member_count" applyOnUpdate="0"/>
+      </defaults>
+      <constraints>
+        <constraint constraints="3" field="id" unique_strength="1" exp_strength="0" notnull_strength="1"/>
+        <constraint constraints="0" field="cooperative_id" unique_strength="0" exp_strength="0" notnull_strength="0"/>
+        <constraint constraints="0" field="cooperative_name" unique_strength="0" exp_strength="0" notnull_strength="0"/>
+        <constraint constraints="0" field="municipality" unique_strength="0" exp_strength="0" notnull_strength="0"/>
+        <constraint constraints="0" field="village_name" unique_strength="0" exp_strength="0" notnull_strength="0"/>
+        <constraint constraints="0" field="total_area_ha" unique_strength="0" exp_strength="0" notnull_strength="0"/>
+        <constraint constraints="0" field="actual_area_ha" unique_strength="0" exp_strength="0" notnull_strength="0"/>
+        <constraint constraints="0" field="difference_ha" unique_strength="0" exp_strength="0" notnull_strength="0"/>
+        <constraint constraints="0" field="cultivated_area_ha" unique_strength="0" exp_strength="0" notnull_strength="0"/>
+        <constraint constraints="0" field="fallow_area_ha" unique_strength="0" exp_strength="0" notnull_strength="0"/>
+        <constraint constraints="0" field="forest_area_ha" unique_strength="0" exp_strength="0" notnull_strength="0"/>
+        <constraint constraints="0" field="other_uses_ha" unique_strength="0" exp_strength="0" notnull_strength="0"/>
+        <constraint constraints="0" field="main_crop" unique_strength="0" exp_strength="0" notnull_strength="0"/>
+        <constraint constraints="0" field="secondary_crop" unique_strength="0" exp_strength="0" notnull_strength="0"/>
+        <constraint constraints="0" field="crop_rotation_system" unique_strength="0" exp_strength="0" notnull_strength="0"/>
+        <constraint constraints="0" field="has_irrigation" unique_strength="0" exp_strength="0" notnull_strength="0"/>
+        <constraint constraints="0" field="has_storage" unique_strength="0" exp_strength="0" notnull_strength="0"/>
+        <constraint constraints="0" field="has_processing_facility" unique_strength="0" exp_strength="0" notnull_strength="0"/>
+        <constraint constraints="0" field="survey_date" unique_strength="0" exp_strength="0" notnull_strength="0"/>
+        <constraint constraints="0" field="surveyor_name" unique_strength="0" exp_strength="0" notnull_strength="0"/>
+        <constraint constraints="0" field="data_source" unique_strength="0" exp_strength="0" notnull_strength="0"/>
+        <constraint constraints="0" field="last_updated" unique_strength="0" exp_strength="0" notnull_strength="0"/>
+        <constraint constraints="0" field="land_use_id" unique_strength="0" exp_strength="0" notnull_strength="0"/>
+        <constraint constraints="0" field="status_id" unique_strength="0" exp_strength="0" notnull_strength="0"/>
+        <constraint constraints="0" field="legal_status" unique_strength="0" exp_strength="0" notnull_strength="0"/>
+        <constraint constraints="0" field="registration_date" unique_strength="0" exp_strength="0" notnull_strength="0"/>
+        <constraint constraints="0" field="member_count" unique_strength="0" exp_strength="0" notnull_strength="0"/>
+      </constraints>
+      <constraintExpressions>
+        <constraint field="id" exp="" desc=""/>
+        <constraint field="cooperative_id" exp="" desc=""/>
+        <constraint field="cooperative_name" exp="" desc=""/>
+        <constraint field="municipality" exp="" desc=""/>
+        <constraint field="village_name" exp="" desc=""/>
+        <constraint field="total_area_ha" exp="" desc=""/>
+        <constraint field="actual_area_ha" exp="" desc=""/>
+        <constraint field="difference_ha" exp="" desc=""/>
+        <constraint field="cultivated_area_ha" exp="" desc=""/>
+        <constraint field="fallow_area_ha" exp="" desc=""/>
+        <constraint field="forest_area_ha" exp="" desc=""/>
+        <constraint field="other_uses_ha" exp="" desc=""/>
+        <constraint field="main_crop" exp="" desc=""/>
+        <constraint field="secondary_crop" exp="" desc=""/>
+        <constraint field="crop_rotation_system" exp="" desc=""/>
+        <constraint field="has_irrigation" exp="" desc=""/>
+        <constraint field="has_storage" exp="" desc=""/>
+        <constraint field="has_processing_facility" exp="" desc=""/>
+        <constraint field="survey_date" exp="" desc=""/>
+        <constraint field="surveyor_name" exp="" desc=""/>
+        <constraint field="data_source" exp="" desc=""/>
+        <constraint field="last_updated" exp="" desc=""/>
+        <constraint field="land_use_id" exp="" desc=""/>
+        <constraint field="status_id" exp="" desc=""/>
+        <constraint field="legal_status" exp="" desc=""/>
+        <constraint field="registration_date" exp="" desc=""/>
+        <constraint field="member_count" exp="" desc=""/>
+      </constraintExpressions>
+      <expressionfields/>
+      <attributeactions>
+        <defaultAction value="{00000000-0000-0000-0000-000000000000}" key="Canvas"/>
+      </attributeactions>
+      <attributetableconfig sortOrder="0" actionWidgetStyle="dropDown" sortExpression="">
+        <columns>
+          <column hidden="0" name="id" type="field" width="-1"/>
+          <column hidden="0" name="cooperative_id" type="field" width="-1"/>
+          <column hidden="0" name="cooperative_name" type="field" width="-1"/>
+          <column hidden="0" name="municipality" type="field" width="-1"/>
+          <column hidden="0" name="village_name" type="field" width="-1"/>
+          <column hidden="0" name="total_area_ha" type="field" width="-1"/>
+          <column hidden="0" name="actual_area_ha" type="field" width="-1"/>
+          <column hidden="0" name="difference_ha" type="field" width="-1"/>
+          <column hidden="0" name="cultivated_area_ha" type="field" width="-1"/>
+          <column hidden="0" name="fallow_area_ha" type="field" width="-1"/>
+          <column hidden="0" name="forest_area_ha" type="field" width="-1"/>
+          <column hidden="0" name="other_uses_ha" type="field" width="-1"/>
+          <column hidden="0" name="main_crop" type="field" width="-1"/>
+          <column hidden="0" name="secondary_crop" type="field" width="-1"/>
+          <column hidden="0" name="crop_rotation_system" type="field" width="-1"/>
+          <column hidden="0" name="has_irrigation" type="field" width="-1"/>
+          <column hidden="0" name="has_storage" type="field" width="-1"/>
+          <column hidden="0" name="has_processing_facility" type="field" width="-1"/>
+          <column hidden="0" name="survey_date" type="field" width="-1"/>
+          <column hidden="0" name="surveyor_name" type="field" width="-1"/>
+          <column hidden="0" name="data_source" type="field" width="-1"/>
+          <column hidden="0" name="last_updated" type="field" width="-1"/>
+          <column hidden="0" name="land_use_id" type="field" width="-1"/>
+          <column hidden="0" name="status_id" type="field" width="-1"/>
+          <column hidden="0" name="legal_status" type="field" width="-1"/>
+          <column hidden="0" name="registration_date" type="field" width="-1"/>
+          <column hidden="0" name="member_count" type="field" width="-1"/>
+          <column hidden="1" type="actions" width="-1"/>
+        </columns>
+      </attributetableconfig>
+      <conditionalstyles>
+        <rowstyles/>
+        <fieldstyles/>
+      </conditionalstyles>
+      <storedexpressions/>
+      <editform tolerant="1">../forms/new_coop.ui</editform>
+      <editforminit/>
+      <editforminitcodesource>0</editforminitcodesource>
+      <editforminitfilepath></editforminitfilepath>
+      <editforminitcode><![CDATA[# -*- coding: utf-8 -*-
+"""
+QGIS forms can have a Python function that is called when the form is
+opened.
+
+Use this function to add extra logic to your forms.
+
+Enter the name of the function in the "Python Init function"
+field.
+An example follows:
+"""
+from qgis.PyQt.QtWidgets import QWidget
+
+def my_form_open(dialog, layer, feature):
+    geom = feature.geometry()
+    control = dialog.findChild(QWidget, "MyLineEdit")
+]]></editforminitcode>
+      <featformsuppress>0</featformsuppress>
+      <editorlayout>tablayout</editorlayout>
+      <attributeEditorForm>
+        <labelStyle overrideLabelColor="0" labelColor="" overrideLabelFont="0">
+          <labelFont description="MS Shell Dlg 2,8.3,-1,5,50,0,0,0,0,0" underline="0" bold="0" strikethrough="0" style="" italic="0"/>
+        </labelStyle>
+        <attributeEditorField name="cooperative_name" index="2" showLabel="1" horizontalStretch="0" verticalStretch="0">
+          <labelStyle overrideLabelColor="0" labelColor="" overrideLabelFont="0">
+            <labelFont description="MS Shell Dlg 2,8.3,-1,5,50,0,0,0,0,0" underline="0" bold="0" strikethrough="0" style="" italic="0"/>
+          </labelStyle>
+        </attributeEditorField>
+      </attributeEditorForm>
+      <editable>
+        <field name="actual_area_ha" editable="1"/>
+        <field name="cooperative_id" editable="0"/>
+        <field name="cooperative_name" editable="1"/>
+        <field name="crop_rotation_system" editable="1"/>
+        <field name="cultivated_area_ha" editable="1"/>
+        <field name="data_source" editable="1"/>
+        <field name="difference_ha" editable="0"/>
+        <field name="fallow_area_ha" editable="1"/>
+        <field name="forest_area_ha" editable="1"/>
+        <field name="has_irrigation" editable="1"/>
+        <field name="has_processing_facility" editable="1"/>
+        <field name="has_storage" editable="1"/>
+        <field name="id" editable="0"/>
+        <field name="land_use_id" editable="1"/>
+        <field name="last_updated" editable="1"/>
+        <field name="legal_status" editable="0"/>
+        <field name="main_crop" editable="1"/>
+        <field name="member_count" editable="0"/>
+        <field name="municipality" editable="0"/>
+        <field name="other_uses_ha" editable="1"/>
+        <field name="registration_date" editable="0"/>
+        <field name="secondary_crop" editable="1"/>
+        <field name="status_id" editable="1"/>
+        <field name="survey_date" editable="1"/>
+        <field name="surveyor_name" editable="1"/>
+        <field name="total_area_ha" editable="1"/>
+        <field name="village_name" editable="1"/>
+      </editable>
+      <labelOnTop>
+        <field name="actual_area_ha" labelOnTop="0"/>
+        <field name="cooperative_id" labelOnTop="0"/>
+        <field name="cooperative_name" labelOnTop="0"/>
+        <field name="crop_rotation_system" labelOnTop="0"/>
+        <field name="cultivated_area_ha" labelOnTop="0"/>
+        <field name="data_source" labelOnTop="0"/>
+        <field name="difference_ha" labelOnTop="0"/>
+        <field name="fallow_area_ha" labelOnTop="0"/>
+        <field name="forest_area_ha" labelOnTop="0"/>
+        <field name="has_irrigation" labelOnTop="0"/>
+        <field name="has_processing_facility" labelOnTop="0"/>
+        <field name="has_storage" labelOnTop="0"/>
+        <field name="id" labelOnTop="0"/>
+        <field name="land_use_id" labelOnTop="0"/>
+        <field name="last_updated" labelOnTop="0"/>
+        <field name="legal_status" labelOnTop="0"/>
+        <field name="main_crop" labelOnTop="0"/>
+        <field name="member_count" labelOnTop="0"/>
+        <field name="municipality" labelOnTop="0"/>
+        <field name="other_uses_ha" labelOnTop="0"/>
+        <field name="registration_date" labelOnTop="0"/>
+        <field name="secondary_crop" labelOnTop="0"/>
+        <field name="status_id" labelOnTop="0"/>
+        <field name="survey_date" labelOnTop="0"/>
+        <field name="surveyor_name" labelOnTop="0"/>
+        <field name="total_area_ha" labelOnTop="0"/>
+        <field name="village_name" labelOnTop="0"/>
+      </labelOnTop>
+      <reuseLastValue>
+        <field name="actual_area_ha" reuseLastValue="0"/>
+        <field name="cooperative_id" reuseLastValue="0"/>
+        <field name="cooperative_name" reuseLastValue="0"/>
+        <field name="crop_rotation_system" reuseLastValue="0"/>
+        <field name="cultivated_area_ha" reuseLastValue="0"/>
+        <field name="data_source" reuseLastValue="0"/>
+        <field name="difference_ha" reuseLastValue="0"/>
+        <field name="fallow_area_ha" reuseLastValue="0"/>
+        <field name="forest_area_ha" reuseLastValue="0"/>
+        <field name="has_irrigation" reuseLastValue="0"/>
+        <field name="has_processing_facility" reuseLastValue="0"/>
+        <field name="has_storage" reuseLastValue="0"/>
+        <field name="id" reuseLastValue="0"/>
+        <field name="land_use_id" reuseLastValue="0"/>
+        <field name="last_updated" reuseLastValue="0"/>
+        <field name="legal_status" reuseLastValue="0"/>
+        <field name="main_crop" reuseLastValue="0"/>
+        <field name="member_count" reuseLastValue="0"/>
+        <field name="municipality" reuseLastValue="0"/>
+        <field name="other_uses_ha" reuseLastValue="0"/>
+        <field name="registration_date" reuseLastValue="0"/>
+        <field name="secondary_crop" reuseLastValue="0"/>
+        <field name="status_id" reuseLastValue="0"/>
+        <field name="survey_date" reuseLastValue="0"/>
+        <field name="surveyor_name" reuseLastValue="0"/>
+        <field name="total_area_ha" reuseLastValue="0"/>
+        <field name="village_name" reuseLastValue="0"/>
+      </reuseLastValue>
+      <dataDefinedFieldProperties/>
+      <widgets/>
+      <previewExpression>"cooperative_name"</previewExpression>
+      <mapTip enabled="1"></mapTip>
+    </maplayer>
+  </maplayers>
+</qlr>

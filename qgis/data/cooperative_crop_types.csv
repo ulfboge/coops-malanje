@@ -9,6 +9,7 @@ cooperative_id,crop_type
 9,Beans
 9,Tubers
 9,Cereals
+9,Horticulture
 8,Beans
 8,Tubers
 8,Cereals
@@ -26,6 +27,7 @@ cooperative_id,crop_type
 16,Beans
 16,Tubers
 16,Cereals
+16,Soja
 9,n.a.
 15,Beans
 15,Tubers

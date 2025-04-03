@@ -1,0 +1,20 @@
+# Database Update Commands
+
+# 1. Connect to the database
+PGPASSWORD='g36?h!sCGL#j9&g@' psql -h localhost -U coops_admin -d coops_malanje
+
+# 2. Create the communes table and update cooperatives table
+\i db/migrations/V2__add_communes.sql
+
+# 3. Import the communes data
+\copy communes (id, name, municipality_id) FROM 'qgis/data/communes.csv' WITH (FORMAT csv, HEADER true);
+
+# 4. Update the cooperatives table with commune_id
+\copy cooperatives (name, legal_status, municipality_id, commune_id, registration_date, member_count, geom) FROM 'cooperatives.csv' WITH (FORMAT csv, HEADER true);
+
+# 5. Verify the data
+SELECT COUNT(*) FROM communes;
+SELECT COUNT(*) FROM cooperatives WHERE commune_id IS NOT NULL;
+
+# 6. Exit psql
+\q 
