@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cooperative Areas - Malanje</title>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.css' rel='stylesheet' />
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.15.0/mapbox-gl.js'></script>
+    <style>
+        body { margin: 0; padding: 0; }
+        #map { position: absolute; top: 0; bottom: 0; width: 100%; }
+        .legend {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background: white;
+            padding: 10px;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            font-family: Arial, sans-serif;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            margin: 5px 0;
+            font-size: 12px;
+        }
+        .legend-color {
+            width: 15px;
+            height: 15px;
+            margin-right: 8px;
+            border: 1px solid #ccc;
+        }
+        .map-controls {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: white;
+            padding: 10px;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            font-family: Arial, sans-serif;
+            min-width: 200px;
+            z-index: 1;
+        }
+
+        .control-group {
+            margin: 10px 0;
+            padding: 5px;
+            border-top: 1px solid #eee;
+        }
+
+        .control-group:first-child {
+            border-top: none;
+        }
+
+        .control-group label {
+            display: block;
+            margin: 5px 0;
+            font-size: 12px;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .control-group input[type="range"] {
+            width: 100%;
+            margin: 5px 0;
+        }
+
+        .control-group select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: white;
+            font-size: 12px;
+            color: #333;
+            cursor: pointer;
+            outline: none;
+        }
+
+        .control-group input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 12px;
+            color: #333;
+            outline: none;
+        }
+
+        .control-group input[type="checkbox"] {
+            margin-right: 8px;
+        }
+
+        .control-group input[type="checkbox"] + label {
+            display: inline;
+            font-weight: normal;
+        }
+
+        /* Search suggestions dropdown */
+        .search-container {
+            position: relative;
+            width: 100%;
+        }
+
+        .search-suggestions {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: white;
+            border: 1px solid #ccc;
+            border-radius: 0 0 4px 4px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            max-height: 200px;
+            overflow-y: auto;
+            z-index: 1000;
+            display: none;
+        }
+
+        .suggestion-item {
+            padding: 8px;
+            cursor: pointer;
+            font-size: 12px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .suggestion-item:hover {
+            background-color: #f5f5f5;
+        }
+
+        .suggestion-item:last-child {
+            border-bottom: none;
+        }
+        .popup-content {
+            font-family: Arial, sans-serif;
+            min-width: 350px;
+            background: white;
+            border-radius: 8px;
+        }
+        .popup-header {
+            padding: 15px 15px 0 15px;
+            position: relative;
+        }
+        .popup-body {
+            padding: 0 15px 15px 15px;
+        }
+        .popup-content h3 {
+            margin: 0 0 15px 0;
+            color: #333;
+            font-size: 18px;
+            border-bottom: 2px solid #627BC1;
+            padding-bottom: 8px;
+            padding-right: 35px;
+        }
+        .popup-content table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+        }
+        .popup-content td {
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+            vertical-align: top;
+        }
+        .popup-content td:first-child {
+            width: 45%;
+            color: #666;
+            font-weight: 500;
+        }
+        .popup-content td:last-child {
+            color: #333;
+            text-align: right;
+        }
+        .mapboxgl-popup {
+            max-width: 400px;
+        }
+        .mapboxgl-popup-content {
+            padding: 0;
+            border-radius: 8px;
+            background: white;
+            position: relative;
+        }
+        .mapboxgl-popup-tip {
+            border-top-color: white;
+        }
+        .mapboxgl-popup-close-button {
+            display: none; /* Hide the close button */
+        }
+        .mapboxgl-ctrl-group {
+            background: white;
+            border-radius: 4px;
+            box-shadow: 0 0 0 2px rgba(0,0,0,.1);
+        }
+        .stats-panel {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: white;
+            padding: 15px;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            font-family: Arial, sans-serif;
+            min-width: 250px;
+            z-index: 1;
+        }
+        .stats-panel h3 {
+            margin: 0 0 15px 0;
+            color: #333;
+            font-size: 16px;
+            border-bottom: 2px solid #627BC1;
+            padding-bottom: 8px;
+        }
+        .stat-item {
+            margin: 10px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .stat-label {
+            color: #666;
+            font-size: 13px;
+        }
+        .stat-value {
+            color: #333;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        .stat-section {
+            margin: 15px 0;
+            padding-top: 10px;
+            border-top: 1px solid #eee;
+        }
+        .stat-section:first-child {
+            margin-top: 0;
+            padding-top: 0;
+            border-top: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+    <div class="legend" id="municipality-legend">
+        <h4>Municipalities</h4>
+        <div id="legend-items"></div>
+    </div>
+    <div class="map-controls">
+        <div class="control-group">
+            <label for="basemap-select">Basemap Style:</label>
+            <select id="basemap-select" onchange="changeBasemap(this.value)">
+                <option value="light">Light (Default)</option>
+                <option value="satellite">Satellite</option>
+                <option value="satellite-streets">Satellite with Streets</option>
+                <option value="dark">Dark</option>
+                <option value="outdoors">Outdoors</option>
+                <option value="streets">Streets</option>
+                <option value="navigation">Navigation</option>
+            </select>
+        </div>
+        <div class="control-group">
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Search cooperatives...">
+                <div id="searchSuggestions" class="search-suggestions"></div>
+            </div>
+        </div>
+        <div class="control-group">
+            <input type="checkbox" id="show-cooperatives" checked onchange="toggleLayerVisibility()">
+            <label for="show-cooperatives">Show Cooperatives</label>
+        </div>
+        <div class="control-group">
+            <label for="fill-opacity">Fill Opacity: <span id="opacity-value">50%</span></label>
+            <input type="range" id="fill-opacity" min="0" max="100" value="50" onchange="updateOpacity(this.value)">
+        </div>
+        <div class="control-group">
+            <label for="municipality-filter">Filter by Municipality:</label>
+            <select id="municipality-filter" onchange="filterByMunicipality(this.value)">
+                <option value="all">All Municipalities</option>
+            </select>
+        </div>
+    </div>
+    <div class="stats-panel">
+        <h3>Cooperative Statistics</h3>
+        <div class="stat-section">
+            <div class="stat-item">
+                <span class="stat-label">Total Cooperatives:</span>
+                <span class="stat-value" id="total-cooperatives">-</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-label">Total Area (ha):</span>
+                <span class="stat-value" id="total-area">-</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-label">Total Members:</span>
+                <span class="stat-value" id="total-members">-</span>
+            </div>
+        </div>
+        <div class="stat-section">
+            <div class="stat-item">
+                <span class="stat-label">By Municipality:</span>
+            </div>
+            <div id="municipality-stats"></div>
+        </div>
+    </div>
+
+    <script>
+        // Replace with your Mapbox access token
+        mapboxgl.accessToken = 'pk.eyJ1Ijoiam9rYTAyMTIiLCJhIjoiY204YzRxdXoyMXNnMzJqcjdwNmVhaGFsdiJ9.3UgFcNmzBnGaD0qsHG3XpQ';
+
+        const map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/mapbox/light-v11',
+            center: [16.3333, -9.5333], // Malanje coordinates
+            zoom: 10
+        });
+
+        // Add navigation controls
+        map.addControl(new mapboxgl.NavigationControl(), 'bottom-right');
+
+        // Function to toggle layer visibility
+        function toggleLayerVisibility() {
+            const isVisible = document.getElementById('show-cooperatives').checked;
+            const visibility = isVisible ? 'visible' : 'none';
+            
+            if (map.getLayer('cooperative-areas')) {
+                map.setLayoutProperty('cooperative-areas', 'visibility', visibility);
+            }
+            if (map.getLayer('cooperative-areas-outline')) {
+                map.setLayoutProperty('cooperative-areas-outline', 'visibility', visibility);
+            }
+            
+            // Update legend visibility
+            const legend = document.getElementById('municipality-legend');
+            legend.style.display = isVisible ? 'block' : 'none';
+        }
+
+        // Function to change basemap
+        function changeBasemap(style) {
+            const styles = {
+                'light': 'mapbox://styles/mapbox/light-v11',
+                'satellite': 'mapbox://styles/mapbox/satellite-v9',
+                'satellite-streets': 'mapbox://styles/mapbox/satellite-streets-v12',
+                'dark': 'mapbox://styles/mapbox/dark-v11',
+                'outdoors': 'mapbox://styles/mapbox/outdoors-v12',
+                'streets': 'mapbox://styles/mapbox/streets-v12',
+                'navigation': 'mapbox://styles/mapbox/navigation-day-v1'
+            };
+
+            // Store the current visibility of our layers
+            const fillVisibility = map.getLayoutProperty('cooperative-areas', 'visibility');
+            const outlineVisibility = map.getLayoutProperty('cooperative-areas-outline', 'visibility');
+            const isVisible = document.getElementById('show-cooperatives').checked;
+
+            // Change the style
+            map.setStyle(styles[style]);
+
+            // Wait for the style to load before adding our layers
+            map.once('style.load', () => {
+                // Re-add our layers
+                addCooperativeLayer();
+                
+                // Restore visibility
+                if (isVisible) {
+                    if (fillVisibility) {
+                        map.setLayoutProperty('cooperative-areas', 'visibility', fillVisibility);
+                    }
+                    if (outlineVisibility) {
+                        map.setLayoutProperty('cooperative-areas-outline', 'visibility', outlineVisibility);
+                    }
+                } else {
+                    map.setLayoutProperty('cooperative-areas', 'visibility', 'none');
+                    map.setLayoutProperty('cooperative-areas-outline', 'visibility', 'none');
+                }
+            });
+        }
+
+        // Function to update opacity
+        function updateOpacity(value) {
+            console.log('Updating opacity to:', value);
+            document.getElementById('opacity-value').textContent = value + '%';
+            const opacity = value / 100;
+            
+            // Update the layer opacity
+            if (map.getLayer('cooperative-areas')) {
+                console.log('Setting layer opacity to:', opacity);
+                map.setPaintProperty('cooperative-areas', 'fill-opacity', opacity);
+                
+                // Force a repaint
+                map.triggerRepaint();
+            } else {
+                console.error('Layer not found');
+            }
+            
+            // Update the legend colors opacity
+            const legendColors = document.querySelectorAll('.legend-color');
+            legendColors.forEach(color => {
+                color.style.opacity = opacity;
+            });
+        }
+
+        // Function to update statistics
+        function updateStatistics() {
+            if (!map.getSource('cooperative-areas')) return;
+
+            const features = map.querySourceFeatures('cooperative-areas');
+            
+            // Calculate total statistics
+            const totalCoops = new Set(features.map(f => f.properties.cooperative_name)).size;
+            let totalArea = 0;
+            let totalMembers = 0;
+            const municipalityStats = {};
+
+            features.forEach(feature => {
+                const props = feature.properties;
+                const area = props.actual_area_ha || 0;
+                const members = props.member_count || 0;
+                const municipality = props.municipality;
+
+                totalArea += area;
+                totalMembers += members;
+
+                // Aggregate by municipality
+                if (municipality) {
+                    if (!municipalityStats[municipality]) {
+                        municipalityStats[municipality] = {
+                            coops: new Set(),
+                            area: 0,
+                            members: 0
+                        };
+                    }
+                    municipalityStats[municipality].coops.add(props.cooperative_name);
+                    municipalityStats[municipality].area += area;
+                    municipalityStats[municipality].members += members;
+                }
+            });
+
+            // Update total statistics
+            document.getElementById('total-cooperatives').textContent = totalCoops;
+            document.getElementById('total-area').textContent = totalArea.toFixed(2);
+            document.getElementById('total-members').textContent = totalMembers;
+
+            // Update municipality statistics
+            const municipalityStatsDiv = document.getElementById('municipality-stats');
+            municipalityStatsDiv.innerHTML = '';
+
+            Object.entries(municipalityStats)
+                .sort(([a], [b]) => a.localeCompare(b))
+                .forEach(([municipality, stats]) => {
+                    const div = document.createElement('div');
+                    div.className = 'stat-item';
+                    div.innerHTML = `
+                        <span class="stat-label">${municipality}:</span>
+                        <span class="stat-value">${stats.coops.size} coops / ${stats.area.toFixed(2)} ha</span>
+                    `;
+                    municipalityStatsDiv.appendChild(div);
+                });
+        }
+
+        // Function to filter cooperatives by municipality
+        function filterByMunicipality(municipality) {
+            if (!map.getLayer('cooperative-areas')) return;
+
+            if (municipality === 'all') {
+                map.setFilter('cooperative-areas', null);
+                map.setFilter('cooperative-areas-outline', null);
+            } else {
+                const filter = ['==', ['get', 'municipality'], municipality];
+                map.setFilter('cooperative-areas', filter);
+                map.setFilter('cooperative-areas-outline', filter);
+            }
+
+            // Update statistics after filtering
+            updateStatistics();
+        }
+
+        // Function to update municipality filter options
+        function updateMunicipalityFilter(municipalities) {
+            const filter = document.getElementById('municipality-filter');
+            // Keep the "All Municipalities" option
+            filter.innerHTML = '<option value="all">All Municipalities</option>';
+            // Add municipality options
+            municipalities.forEach(municipality => {
+                const option = document.createElement('option');
+                option.value = municipality;
+                option.textContent = municipality;
+                filter.appendChild(option);
+            });
+        }
+
+        // Function to search cooperatives
+        function searchCooperatives(query) {
+            if (!map.getSource('cooperative-areas')) return;
+            
+            query = query.toLowerCase().trim();
+            
+            if (query === '') {
+                map.setFilter('cooperative-areas', null);
+                map.setFilter('cooperative-areas-outline', null);
+                updateStatistics();
+                return;
+            }
+
+            const filter = [
+                'any',
+                ['to-boolean', ['to-string', ['index-of', query, ['to-string', ['to-lower', ['get', 'cooperative_name']]]]]],
+                ['==', ['to-lower', ['get', 'cooperative_name']], query]
+            ];
+
+            map.setFilter('cooperative-areas', filter);
+            map.setFilter('cooperative-areas-outline', filter);
+
+            const features = map.querySourceFeatures('cooperative-areas', {
+                filter: filter
+            });
+
+            if (features.length === 1) {
+                const bounds = new mapboxgl.LngLatBounds();
+                features[0].geometry.coordinates[0].forEach(coord => {
+                    bounds.extend(coord);
+                });
+                map.fitBounds(bounds, {
+                    padding: 50,
+                    maxZoom: 15
+                });
+            }
+
+            // Update statistics after searching
+            updateStatistics();
+        }
+
+        // Add autocomplete functionality
+        function updateSearchSuggestions(query) {
+            const suggestionsDiv = document.getElementById('searchSuggestions');
+            if (!map.getSource('cooperative-areas')) return;
+            
+            query = query.toLowerCase().trim();
+            
+            if (!query) {
+                suggestionsDiv.style.display = 'none';
+                return;
+            }
+
+            const features = map.querySourceFeatures('cooperative-areas');
+            const matchingFeatures = features.filter(feature => 
+                feature.properties.cooperative_name.toLowerCase().includes(query)
+            );
+
+            if (matchingFeatures.length > 0) {
+                const uniqueNames = [...new Set(matchingFeatures.map(f => f.properties.cooperative_name))];
+                suggestionsDiv.innerHTML = uniqueNames
+                    .sort()
+                    .map(name => `<div class="suggestion-item">${name}</div>`)
+                    .join('');
+                suggestionsDiv.style.display = 'block';
+
+                // Add click handlers to suggestions
+                document.querySelectorAll('.suggestion-item').forEach(item => {
+                    item.addEventListener('click', () => {
+                        document.getElementById('searchInput').value = item.textContent;
+                        searchCooperatives(item.textContent.toLowerCase());
+                        suggestionsDiv.style.display = 'none';
+                    });
+                });
+            } else {
+                suggestionsDiv.style.display = 'none';
+            }
+        }
+
+        // Add event listeners for search
+        document.getElementById('searchInput').addEventListener('input', (e) => {
+            const query = e.target.value;
+            updateSearchSuggestions(query);
+            searchCooperatives(query);
+        });
+
+        // Close suggestions when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.search-container')) {
+                document.getElementById('searchSuggestions').style.display = 'none';
+            }
+        });
+
+        // Function to add cooperative areas layer
+        function addCooperativeLayer() {
+            console.log('Starting to add cooperative layer...');
+            
+            // Remove existing source and layer if they exist
+            if (map.getLayer('cooperative-areas')) {
+                map.removeLayer('cooperative-areas');
+            }
+            if (map.getSource('cooperative-areas')) {
+                map.removeSource('cooperative-areas');
+            }
+
+            // Add source
+            console.log('Adding source...');
+            map.addSource('cooperative-areas', {
+                type: 'geojson',
+                data: '../data/cooperative_areas.geojson'
+            });
+
+            // Add layer with a default color first
+            console.log('Adding layer with default color...');
+            map.addLayer({
+                'id': 'cooperative-areas',
+                'type': 'fill',
+                'source': 'cooperative-areas',
+                'paint': {
+                    'fill-color': '#627BC1',
+                    'fill-opacity': 0.5,
+                    'fill-outline-color': '#627BC1'
+                }
+            });
+
+            // Add outline layer
+            map.addLayer({
+                'id': 'cooperative-areas-outline',
+                'type': 'line',
+                'source': 'cooperative-areas',
+                'paint': {
+                    'line-color': '#627BC1',
+                    'line-width': 2
+                }
+            });
+
+            // Add click event to show cooperative information
+            map.on('click', 'cooperative-areas', (e) => {
+                const properties = e.features[0].properties;
+                
+                // Format the popup content
+                const popupContent = `
+                    <div class="popup-content">
+                        <div class="popup-header">
+                            <h3>${properties.cooperative_name}</h3>
+                        </div>
+                        <div class="popup-body">
+                            <table>
+                                <tr>
+                                    <td><strong>Municipality:</strong></td>
+                                    <td>${properties.municipality}</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Village:</strong></td>
+                                    <td>${properties.village_name || 'Not specified'}</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Total Area:</strong></td>
+                                    <td>${properties.total_area_ha ? properties.total_area_ha.toFixed(2) + ' ha' : 'Not specified'}</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Actual Area:</strong></td>
+                                    <td>${properties.actual_area_ha ? properties.actual_area_ha.toFixed(2) + ' ha' : 'Not specified'}</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Members:</strong></td>
+                                    <td>${properties.member_count || 'Not specified'}</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Registration Date:</strong></td>
+                                    <td>${properties.registration_date ? new Date(properties.registration_date).toLocaleDateString() : 'Not specified'}</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Status:</strong></td>
+                                    <td>${properties.legal_status}</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                `;
+
+                // Create and showing the popup
+                new mapboxgl.Popup()
+                    .setLngLat(e.lngLat)
+                    .setHTML(popupContent)
+                    .addTo(map);
+
+                // Change cursor to pointer when hovering over cooperatives
+                map.getCanvas().style.cursor = 'pointer';
+            });
+
+            // Change cursor back to default when not hovering over cooperatives
+            map.on('mouseleave', 'cooperative-areas', () => {
+                map.getCanvas().style.cursor = '';
+            });
+
+            // Add hover effect
+            map.on('mouseenter', 'cooperative-areas', () => {
+                map.getCanvas().style.cursor = 'pointer';
+            });
+
+            // Wait for the map to be idle before updating colors
+            map.once('idle', () => {
+                console.log('Map is idle, checking source...');
+                try {
+                    // Check if source exists
+                    if (!map.getSource('cooperative-areas')) {
+                        console.error('Source not found');
+                        return;
+                    }
+
+                    // Get features
+                    const features = map.querySourceFeatures('cooperative-areas');
+                    console.log('Loaded features:', features.length);
+                    
+                    if (features.length > 0) {
+                        const municipalities = [...new Set(features.map(f => f.properties.municipality))];
+                        console.log('Municipalities:', municipalities);
+                        
+                        // Create color mapping
+                        const colors = [
+                            '#FF0000', // Red
+                            '#00FF00', // Green
+                            '#0000FF', // Blue
+                            '#FFA500', // Orange
+                            '#800080', // Purple
+                            '#008080', // Teal
+                            '#FF00FF', // Magenta
+                            '#00FFFF', // Cyan
+                            '#FFD700', // Gold
+                            '#4B0082'  // Indigo
+                        ];
+                        const municipalityColors = {};
+                        municipalities.forEach((municipality, index) => {
+                            municipalityColors[municipality] = colors[index % colors.length];
+                        });
+
+                        // Update legend
+                        const legendItems = document.getElementById('legend-items');
+                        legendItems.innerHTML = municipalities.map(municipality => `
+                            <div class="legend-item">
+                                <div class="legend-color" style="background-color: ${municipalityColors[municipality]}; opacity: 0.5;"></div>
+                                <span>${municipality}</span>
+                            </div>
+                        `).join('');
+
+                        // Update layer colors
+                        map.setPaintProperty('cooperative-areas', 'fill-color', [
+                            'match',
+                            ['get', 'municipality'],
+                            ...municipalities.flatMap(m => [m, municipalityColors[m]]),
+                            '#627BC1' // default color
+                        ]);
+
+                        // Update outline colors
+                        map.setPaintProperty('cooperative-areas-outline', 'line-color', [
+                            'match',
+                            ['get', 'municipality'],
+                            ...municipalities.flatMap(m => [m, municipalityColors[m]]),
+                            '#627BC1' // default color
+                        ]);
+
+                        // Set initial opacity
+                        updateOpacity(50);
+
+                        // Update municipality filter
+                        updateMunicipalityFilter(municipalities);
+                    } else {
+                        console.error('No features found in the source');
+                        // Try to fetch the GeoJSON file directly to check its contents
+                        fetch('../data/cooperative_areas.geojson')
+                            .then(response => response.json())
+                            .then(data => {
+                                console.log('GeoJSON contents:', data);
+                                if (data.features && data.features.length > 0) {
+                                    console.log('Features found in GeoJSON:', data.features.length);
+                                } else {
+                                    console.error('No features found in GeoJSON file');
+                                }
+                            })
+                            .catch(error => {
+                                console.error('Error fetching GeoJSON:', error);
+                            });
+                    }
+                } catch (error) {
+                    console.error('Error processing features:', error);
+                }
+            });
+        }
+
+        // Wait for map to load before adding data
+        map.on('load', () => {
+            console.log('Map loaded, adding cooperative layer...');
+            addCooperativeLayer();
+
+            // Update statistics when the source is loaded
+            map.once('sourcedata', (e) => {
+                if (e.sourceId === 'cooperative-areas' && e.isSourceLoaded) {
+                    updateStatistics();
+                }
+            });
+        });
+
+        // Update statistics when filters change
+        map.on('sourcedata', (e) => {
+            if (e.sourceId === 'cooperative-areas' && e.isSourceLoaded) {
+                updateStatistics();
+            }
+        });
+    </script>
+</body>
+</html> 
