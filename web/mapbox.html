@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Malanje Cooperatives Map</title>
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no">
+    <link href="https://api.mapbox.com/mapbox-gl-js/v3.10.0/mapbox-gl.css" rel="stylesheet">
+    <script src="https://api.mapbox.com/mapbox-gl-js/v3.10.0/mapbox-gl.js"></script>
+    <style>
+        body { margin: 0; padding: 0; }
+        #map { position: absolute; top: 0; bottom: 0; width: 100%; }
+        
+        /* Controls panel */
+        .controls {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: white;
+            padding: 10px;
+            border-radius: 4px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        
+        .control-group {
+            margin-bottom: 10px;
+        }
+        
+        /* Legend */
+        .legend {
+            position: absolute;
+            bottom: 30px;
+            right: 10px;
+            background: white;
+            padding: 10px;
+            border-radius: 4px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+        
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            margin-right: 5px;
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+    
+    <!-- Controls -->
+    <div class="controls">
+        <div class="control-group">
+            <label>
+                <input type="checkbox" id="show-cooperatives" checked onchange="toggleLayerVisibility()">
+                Show Cooperatives
+            </label>
+        </div>
+        <div class="control-group">
+            <label>
+                <input type="checkbox" id="show-additional-cooperatives" checked onchange="toggleAdditionalCooperatives()">
+                Show Additional Cooperatives
+            </label>
+        </div>
+        <div class="control-group">
+            <select id="municipality-filter" onchange="filterByMunicipality()">
+                <option value="all">All Municipalities</option>
+            </select>
+        </div>
+    </div>
+    
+    <!-- Legend -->
+    <div class="legend">
+        <div id="legend-items"></div>
+    </div>
+
+    <script>
+        // Municipality colors
+        const municipalityColors = {
+            'Malanje': '#FF6B6B',
+            'Mucari': '#4ECDC4',
+            'Cangandala': '#45B7D1',
+            'Kalandula': '#96CEB4'
+        };
+
+        // Initialize map
+        mapboxgl.accessToken = 'pk.eyJ1Ijoiam9rYTAyMTIiLCJhIjoiY204YzRxdXoyMXNnMzJqcjdwNmVhaGFsdiJ9.3UgFcNmzBnGaD0qsHG3XpQ';
+        const map = new mapboxgl.Map({
+            container: 'map',
+            style: 'mapbox://styles/mapbox/light-v11',
+            center: [16.341, -9.538], // Malanje coordinates
+            zoom: 8
+        });
+
+        // Wait for map to load before adding data
+        map.on('load', () => {
+            console.log('Map loaded, adding sources...');
+            
+            // Add the existing GeoJSON source
+            map.addSource('cooperatives', {
+                type: 'geojson',
+                data: '../data/cooperative_areas.geojson'
+            });
+
+            // Add the additional cooperatives source
+            map.addSource('additional-cooperatives', {
+                type: 'geojson',
+                data: '../data/all_cooperatives.geojson'
+            });
+
+            // Add the cooperative areas layer
+            map.addLayer({
+                'id': 'cooperative-areas',
+                'type': 'fill',
+                'source': 'cooperatives',
+                'paint': {
+                    'fill-color': [
+                        'match',
+                        ['get', 'municipality'],
+                        ...Object.entries(municipalityColors).flat(),
+                        '#ccc' // default color
+                    ],
+                    'fill-opacity': 0.5
+                }
+            });
+
+            // Add point layer for existing cooperative locations
+            map.addLayer({
+                'id': 'cooperative-points',
+                'type': 'circle',
+                'source': 'cooperatives',
+                'filter': ['==', '$type', 'Point'],
+                'paint': {
+                    'circle-radius': 5,
+                    'circle-color': '#000',
+                    'circle-stroke-width': 1,
+                    'circle-stroke-color': '#fff'
+                }
+            });
+
+            // Add outline layer
+            map.addLayer({
+                'id': 'cooperative-areas-outline',
+                'type': 'line',
+                'source': 'cooperatives',
+                'paint': {
+                    'line-color': '#000',
+                    'line-width': 1
+                }
+            });
+
+            // Add point layer for additional cooperatives
+            map.addLayer({
+                'id': 'additional-cooperatives',
+                'type': 'circle',
+                'source': 'additional-cooperatives',
+                'filter': ['==', '$type', 'Point'],
+                'paint': {
+                    'circle-radius': 6,
+                    'circle-color': [
+                        'match',
+                        ['get', 'municipality'],
+                        ...Object.entries(municipalityColors).flat(),
+                        '#ccc' // default color
+                    ],
+                    'circle-stroke-width': 2,
+                    'circle-stroke-color': '#fff'
+                }
+            });
+
+            // Create legend
+            const legendContainer = document.getElementById('legend-items');
+            Object.entries(municipalityColors).forEach(([municipality, color]) => {
+                const item = document.createElement('div');
+                item.className = 'legend-item';
+                item.innerHTML = `
+                    <div class="legend-color" style="background-color: ${color}"></div>
+                    <div>${municipality}</div>
+                `;
+                legendContainer.appendChild(item);
+            });
+
+            // Add source loading logging
+            map.on('sourcedata', (e) => {
+                if (e.sourceId === 'cooperatives') {
+                    if (e.isSourceLoaded) {
+                        console.log('Cooperatives source loaded successfully');
+                        const features = map.querySourceFeatures('cooperatives');
+                        console.log('Number of cooperative features:', features.length);
+                        console.log('Feature types:', [...new Set(features.map(f => f.geometry.type))]);
+                    }
+                } else if (e.sourceId === 'additional-cooperatives') {
+                    if (e.isSourceLoaded) {
+                        console.log('Additional cooperatives source loaded successfully');
+                        const features = map.querySourceFeatures('additional-cooperatives');
+                        console.log('Number of additional cooperative features:', features.length);
+                        console.log('Feature types:', [...new Set(features.map(f => f.geometry.type))]);
+                    }
+                }
+            });
+
+            // Add click events for popups
+            map.on('click', ['cooperative-areas', 'cooperative-points', 'additional-cooperatives'], (e) => {
+                const properties = e.features[0].properties;
+                const coordinates = e.lngLat;
+
+                new mapboxgl.Popup()
+                    .setLngLat(coordinates)
+                    .setHTML(`
+                        <div class="popup-content">
+                            <h3>${properties.cooperative_name || properties.name}</h3>
+                            <table>
+                                <tr><td><strong>Municipality:</strong></td><td>${properties.municipality || 'N/A'}</td></tr>
+                                <tr><td><strong>Village:</strong></td><td>${properties.village_name || properties.village_neighborhood || 'N/A'}</td></tr>
+                                <tr><td><strong>Total Area:</strong></td><td>${properties.total_area_ha ? Math.round(properties.total_area_ha) : 'N/A'} ha</td></tr>
+                                <tr><td><strong>Members:</strong></td><td>${properties.member_count || properties.total_members || 'N/A'}</td></tr>
+                                <tr><td><strong>Legal Status:</strong></td><td>${properties.legal_status || 'N/A'}</td></tr>
+                            </table>
+                        </div>
+                    `)
+                    .addTo(map);
+            });
+
+            // Change cursor on hover
+            map.on('mouseenter', ['cooperative-areas', 'cooperative-points', 'additional-cooperatives'], () => {
+                map.getCanvas().style.cursor = 'pointer';
+            });
+            map.on('mouseleave', ['cooperative-areas', 'cooperative-points', 'additional-cooperatives'], () => {
+                map.getCanvas().style.cursor = '';
+            });
+        });
+
+        // Layer visibility toggle functions
+        function toggleLayerVisibility() {
+            const visibility = document.getElementById('show-cooperatives').checked ? 'visible' : 'none';
+            map.setLayoutProperty('cooperative-areas', 'visibility', visibility);
+            map.setLayoutProperty('cooperative-points', 'visibility', visibility);
+            map.setLayoutProperty('cooperative-areas-outline', 'visibility', visibility);
+        }
+
+        function toggleAdditionalCooperatives() {
+            const visibility = document.getElementById('show-additional-cooperatives').checked ? 'visible' : 'none';
+            map.setLayoutProperty('additional-cooperatives', 'visibility', visibility);
+        }
+
+        // Municipality filter function
+        function filterByMunicipality() {
+            const municipality = document.getElementById('municipality-filter').value;
+            const filter = municipality === 'all' ? null : ['==', ['get', 'municipality'], municipality];
+            
+            map.setFilter('cooperative-areas', filter);
+            map.setFilter('cooperative-points', ['all', ['==', '$type', 'Point'], filter]);
+            map.setFilter('additional-cooperatives', ['all', ['==', '$type', 'Point'], filter]);
+        }
+    </script>
+</body>
+</html> 
