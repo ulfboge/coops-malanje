@@ -2,19 +2,41 @@
 
 This repository contains tools and data for analyzing cooperatives in Malanje Province, Angola.
 
-## Analysis Tools
+## Interactive Map Visualizations
 
-The repository includes Python-based analysis tools in the `analysis` directory:
+The web-based mapping application provides three main visualization types:
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ulfboge/coops-malanje/blob/main/analysis/cooperatives_analysis.ipynb)
+### 1. Legal Status Distribution Map
+- Visualizes registration status of cooperatives
+- Highlights areas needing registration support
+- Shows concentration of registered cooperatives
+- Color-coded by legal status
+- Interactive popups with detailed status information
 
-### Features
-- Interactive data visualizations
-- PDF report generation
-- Data analysis tools
-- Jupyter notebook support
+### 2. Resource Distribution Map
+- Maps available resources by type
+- Shows resource gaps across municipalities
+- Identifies areas needing support
+- Filterable by resource type
+- Detailed resource information in popups
 
-See the [analysis README](analysis/README.md) for detailed setup and usage instructions.
+### 3. Gender Participation Heat Map
+- Shows female participation rates across cooperatives
+- Highlights areas with strong female leadership
+- Identifies areas needing gender support
+- Color gradient based on participation rates
+- Gender statistics in popups
+
+## Web Application Features
+
+The web mapping application (`/web` directory) provides:
+- Interactive visualization of cooperative areas
+- Municipality-based filtering and cooperative search
+- Real-time statistics and area calculations
+- Multiple visualization modes (Legal Status, Resources, Gender)
+- Base map style selection
+- Mobile-responsive design
+- Mapbox integration for enhanced visualization
 
 ## Data
 
@@ -37,15 +59,15 @@ git clone https://github.com/ulfboge/coops-malanje.git
 cd coops-malanje
 ```
 
-2. Install dependencies:
+2. Start the web server:
 ```bash
-cd analysis
-pip install -r requirements.txt
+cd web
+python server.py
 ```
 
-3. Start Jupyter Notebook:
-```bash
-jupyter notebook
+3. Open the web application in your browser:
+```
+http://localhost:8000
 ```
 
 ## License
@@ -79,17 +101,6 @@ coops-malanje/
 - [Interactive Web Map](web/README.md): Browser-based visualization with filtering, search, and statistics
 - [Cooperative Areas Management](docs/cooperative_areas.md): Documentation for managing cooperative area polygons
 - [Setup Instructions](docs/setup.md): Detailed information on server configuration and setup
-
-## Web Application Features
-
-The web mapping application (`/web` directory) provides:
-- Interactive visualization of cooperative areas
-- Municipality-based filtering and cooperative search
-- Real-time statistics and area calculations
-- Municipality-based color coding
-- Base map style selection
-- Mobile-responsive design
-- Mapbox integration for enhanced visualization
 
 ## Data Management
 
