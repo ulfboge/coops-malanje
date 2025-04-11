@@ -1,6 +1,56 @@
 # Cooperatives of Malanje
 
-A comprehensive system for managing and visualizing cooperative data in Malanje, Angola, featuring both QGIS integration and an interactive web mapping application.
+This repository contains tools and data for analyzing cooperatives in Malanje Province, Angola.
+
+## Analysis Tools
+
+The repository includes Python-based analysis tools in the `analysis` directory:
+
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ulfboge/coops-malanje/blob/main/analysis/cooperatives_analysis.ipynb)
+
+### Features
+- Interactive data visualizations
+- PDF report generation
+- Data analysis tools
+- Jupyter notebook support
+
+See the [analysis README](analysis/README.md) for detailed setup and usage instructions.
+
+## Data
+
+The repository contains:
+- Cooperative location data
+- Member statistics
+- Geographic information
+- Project documentation
+
+## Documentation
+
+Detailed documentation can be found in the `docs` directory:
+- [Cooperatives Report](docs/Cooperatives_Malanje_Report.md)
+
+## Setup
+
+1. Clone the repository:
+```bash
+git clone https://github.com/ulfboge/coops-malanje.git
+cd coops-malanje
+```
+
+2. Install dependencies:
+```bash
+cd analysis
+pip install -r requirements.txt
+```
+
+3. Start Jupyter Notebook:
+```bash
+jupyter notebook
+```
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
 
 ## Project Structure
 
@@ -8,12 +58,16 @@ A comprehensive system for managing and visualizing cooperative data in Malanje,
 coops-malanje/
 ├── web/                 # Web mapping application
 │   ├── index.html      # Main web interface
+│   ├── mapbox.html     # Mapbox-based visualization
 │   ├── server.py       # Python server for serving files
+│   ├── export_cooperatives.py      # Export script for local use
+│   ├── export_cooperatives_server.py # Export script for server use
 │   └── README.md       # Web app documentation
 ├── data/               # GeoJSON and other data files
 ├── qgis/
 │   ├── projects/       # QGIS project files (.qgs)
 │   ├── styles/         # Style files (.qml)
+│   ├── data/          # Data files for import/export
 │   └── scripts/        # Python scripts and processing scripts
 ├── config/             # Configuration files
 │   └── server/         # Server configuration files
@@ -35,12 +89,15 @@ The web mapping application (`/web` directory) provides:
 - Municipality-based color coding
 - Base map style selection
 - Mobile-responsive design
+- Mapbox integration for enhanced visualization
 
 ## Data Management
 
-Data files are stored in two locations:
+Data files are stored in multiple locations:
 - Static files in OneDrive to manage large files effectively
 - GeoJSON files in the `/data` directory for web visualization
+- CSV files in `/qgis/data` for database import/export
+- QGIS project files in `/qgis/projects` for spatial data management
 
 ## Server Information
 
@@ -52,12 +109,13 @@ Data files are stored in two locations:
 
 ## Recent Updates
 
-1. Added a new `communes` table to improve data organization
-2. Updated the `cooperatives` table to include a reference to communes
-3. Removed the unnecessary `no` column from the cooperatives.csv file
-4. Created migration scripts to update the database schema
-5. Updated import scripts to handle the new data structure
-6. Added GeoJSON export functionality for web visualization
+1. Added new cooperatives from additions_250408.csv
+2. Updated schema with new fields and constraints
+3. Added data validation and cleaning procedures
+4. Enhanced export functionality with new Python scripts
+5. Added Mapbox integration for web visualization
+6. Improved data import process with better error handling
+7. Added support for European number formatting in imports
 
 ## Database Structure
 
@@ -65,9 +123,10 @@ The database has the following tables:
 
 - `municipalities`: Contains information about municipalities
 - `communes`: Contains information about communes within municipalities
-- `cooperatives`: Contains information about cooperatives, now linked to communes
+- `cooperatives`: Contains information about cooperatives, linked to communes
 - `crop_types`: Contains information about crop types
 - `cooperative_crop_types`: Links cooperatives to crop types
+- `cooperative_contacts`: Stores contact information for cooperatives
 
 ## How to Update the Database
 
@@ -75,22 +134,26 @@ The database has the following tables:
 
 - PostgreSQL with PostGIS extension
 - psql command-line tool
-- Python 3.x for running the web server
+- Python 3.x for running the web server and export scripts
 
 ### Steps to Update
 
-1. Navigate to the `db/scripts` directory
-2. Run the PowerShell script:
-
-```powershell
-.\update_database.ps1
+1. Prepare your data files in `/qgis/data/`
+2. Run the schema update:
+```sql
+psql -U your_username -d your_database -f update_schema.sql
 ```
 
-This script will:
-- Run the database migrations
-- Update the cooperatives table structure
-- Import the data from CSV files
-- Generate updated GeoJSON for the web application
+3. Import new cooperative data:
+```sql
+psql -U your_username -d your_database -f update_cooperatives.sql
+```
+
+4. Export data for web visualization:
+```bash
+python web/export_cooperatives.py  # For local use
+python web/export_cooperatives_server.py  # For server use
+```
 
 ## Data Files
 
@@ -100,13 +163,18 @@ The data files are located in multiple directories:
   - `municipality_points.csv`: Municipality data with coordinates
   - `communes.csv`: Commune data with municipality references
   - `cooperatives.csv`: Cooperative data with commune references
+  - `additions_250408.csv`: New cooperative data
+  - `db_update_250408.csv`: Database update records
   - `crop_types.csv`: Crop type data
   - `cooperative_crop_types.csv`: Cooperative-crop type relationships
 - `data/`: Contains GeoJSON files for web visualization
   - `cooperative_areas.geojson`: Cooperative polygons with properties
+  - `all_cooperatives.geojson`: Complete cooperative dataset
 
 ## Notes
 
 - The `commune_id` in cooperatives.csv corresponds to the `id` in communes.csv
 - The `municipality_id` in communes.csv corresponds to the `id` in municipality_points.csv
-- GeoJSON files are automatically updated when database changes occur 
+- GeoJSON files are automatically updated when database changes occur
+- New cooperative data should follow the format in additions_250408.csv
+- European number formatting (commas as decimal separators) is supported in imports 

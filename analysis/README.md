@@ -5,7 +5,7 @@ This directory contains tools for analyzing and visualizing data about cooperati
 ## Setup Options
 
 ### Option 1: Google Colab (Recommended)
-1. Open the notebook in Google Colab: [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/KAYA-Global/coops-malanje/blob/main/analysis/cooperatives_analysis.ipynb)
+1. Open the notebook in Google Colab: [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/ulfboge/coops-malanje/blob/main/analysis/cooperatives_analysis.ipynb)
 2. The notebook will automatically install required packages
 3. Mount your Google Drive when prompted
 4. Upload your data file or use the sample data
@@ -13,7 +13,7 @@ This directory contains tools for analyzing and visualizing data about cooperati
 ### Option 2: Local Installation
 1. Clone the repository:
 ```bash
-git clone https://github.com/KAYA-Global/coops-malanje.git
+git clone https://github.com/ulfboge/coops-malanje.git
 cd coops-malanje/analysis
 ```
 
